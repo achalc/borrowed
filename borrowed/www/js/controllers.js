@@ -5,6 +5,9 @@ angular.module('starter.controllers', [])
   $scope.tabState = {
     account : {
       hidden : true
+    },
+    home : {
+      hidden : true
     }
   };
     

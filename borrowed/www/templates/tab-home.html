@@ -1,10 +1,28 @@
 <ion-view>
-  <ion-content ng-controller="HomeCtrl">
-    <p>
-      BorrOwed
-    </p>
-    <button class="button button-block" ui-sref="tab.chats">
-    Login
+  <ion-content class="padding">
+		<div class="list">
+		  <label class="item item-input">
+		    <span class="input-label">Email</span>
+		    <input type="text">
+		  </label>
+		  <label class="item item-input">
+		    <span class="input-label">Password</span>
+		    <input type="password">
+		  </label>
+		</div>
+		<div>
+		<li class="item item-checkbox checkbox-stable">
+		     <label class="checkbox">
+		       <input type="checkbox">
+		     </label>
+		     Remember me
+		  </li>
+	  </div>
+      <button class="button icon ion-social-facebook button-block button-positive" type="button">
+      Connect with Facebook
+      </button>
+    <button class="button button-block button-balanced" type="button" ui-sref="tab.chats">
+    Log In
     </button>
   </ion-content>
 </ion-view>
