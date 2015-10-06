@@ -31,19 +31,19 @@
     <!--
       The nav bar that will be updated as we navigate between views.
     -->
-    <ion-nav-bar class="bar-stable">
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-    </ion-nav-bar>
     <!--
       The views will be rendered in the <ion-nav-view> directive below
       Templates are in the /templates folder (but you could also
       have templates inline in this html file if you'd like).
     -->
     <ion-nav-view></ion-nav-view>
-    <ion-footer-bar align-title="right" class="bar bar-footer">
+  <div class="bar bar-header bar-light">
+    <h1 class="title">BorrOwed</h1>
+	<button class="button icon ion-gear-a" ui-sref="tab.account"></button>
+  </div>
+    <ion-footer-bar class="bar bar-footer">
       <div class="buttons">
-        <button class="button icon ion-gear-a" ui-sref="tab.account"></button>
+        <button class="button icon ion-plus"></button>
       </div>
     </ion-footer-bar>
   </body>
