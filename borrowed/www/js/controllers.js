@@ -1,5 +1,18 @@
 angular.module('starter.controllers', [])
 
+.controller("TabsController", function($scope) {
+  
+  $scope.tabState = {
+    account : {
+      hidden : true
+    }
+  };
+    
+  $scope.toggleAccountTab = function() {
+    $scope.tabState.account.hidden = !$scope.tabState.account.hidden
+  }  
+})
+
 .controller('DashCtrl', function($scope) {})
 
 .controller('HomeCtrl', function($scope) {})
@@ -24,7 +37,4 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
 });
