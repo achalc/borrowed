@@ -59,6 +59,16 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push', 's
       }
     }
   })
+  
+  .state('tab.add', {
+    url: '/add',
+    views: {
+      'tab-add': {
+        templateUrl: 'templates/tab-add.html',
+        controller: 'AddCtrl'
+      }
+    }
+  })
 
   .state('tab.chats', {
       url: '/chats',

@@ -8,6 +8,9 @@ angular.module('starter.controllers', [])
     },
     home : {
       hidden : true
+    },
+    add : {
+      hidden : true
     }
   };
     
@@ -17,11 +20,16 @@ angular.module('starter.controllers', [])
   $scope.toggleHomeTab = function() {
     $scope.tabState.home.hidden = !$scope.tabState.home.hidden
   } 
+  $scope.toggleAddTab = function() {
+    $scope.tabState.add.hidden = !$scope.tabState.add.hidden
+  }
 })
 
 .controller('DashCtrl', function($scope) {})
 
 .controller('HomeCtrl', function($scope) {})
+
+.controller('AddCtrl', function($scope) {})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called

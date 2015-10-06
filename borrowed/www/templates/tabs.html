@@ -23,6 +23,10 @@ navigation history that also transitions its views in and out.
 	  <ion-tab title="Home" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ng-controller="TabsController" href="#/tab/home" hidden="{{tabState.home.hidden}}">
 	    <ion-nav-view name="tab-home"></ion-nav-view>
 		  </ion-tab>
+		  
+		 <ion-tab title="Add" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ng-controller="TabsController" href="#/tab/add" hidden="{{tabState.add.hidden}}">
+		  	    <ion-nav-view name="tab-add"></ion-nav-view>
+		  		  </ion-tab>
 
 
 </ion-tabs>
