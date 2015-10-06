@@ -11,6 +11,9 @@ angular.module('starter.controllers', [])
   $scope.toggleAccountTab = function() {
     $scope.tabState.account.hidden = !$scope.tabState.account.hidden
   }  
+  $scope.toggleHomeTab = function() {
+    $scope.tabState.home.hidden = !$scope.tabState.home.hidden
+  } 
 })
 
 .controller('DashCtrl', function($scope) {})

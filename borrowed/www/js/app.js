@@ -38,11 +38,11 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push', 's
     templateUrl: 'templates/tabs.html'
   })
 
-.state('home', {
+.state('tab.home', {
   url: '/home',
   views: {
-    'home': {
-      templateUrl: 'templates/home.html',
+    'tab-home': {
+      templateUrl: 'templates/tab-home.html',
       controller: 'HomeCtrl'
     }
   }
@@ -90,7 +90,7 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push', 's
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/home');
   
   $ionicConfigProvider.tabs.position('top');
   
