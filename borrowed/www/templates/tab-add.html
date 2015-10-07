@@ -1,0 +1,21 @@
+<ion-view>
+  <ion-content class="padding">
+       <h3>
+         New Item
+       </h3>
+	<div class="list">
+	  <label class="item item-input">
+	    <input type="name" placeholder="Item Name">
+	  </label>
+	  <label class="item item-input">
+	    <input type="description" placeholder="Item Description (optional)">
+	  </label>
+	</div>
+	<button class="button button-small button-light" ui-sref="tab.chats">
+	  Cancel
+	</button>
+	<button class="button button-small button-positive" ng-click="new()" ui-sref="tab.chats">
+	  Submit
+	</button>
+  </ion-content>
+</ion-view>

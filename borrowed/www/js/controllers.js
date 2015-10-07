@@ -1,10 +1,45 @@
 angular.module('starter.controllers', [])
 
+.controller("TabsController", function($scope) {
+  
+  $scope.tabState = {
+    account : {
+      hidden : true
+    },
+    home : {
+      hidden : true
+    },
+    add : {
+      hidden : true
+    }
+  };
+    
+  $scope.toggleAccountTab = function() {
+    $scope.tabState.account.hidden = !$scope.tabState.account.hidden
+  }  
+  $scope.toggleHomeTab = function() {
+    $scope.tabState.home.hidden = !$scope.tabState.home.hidden
+  } 
+  $scope.toggleAddTab = function() {
+    $scope.tabState.add.hidden = !$scope.tabState.add.hidden
+  }
+})
+
 .controller('DashCtrl', function($scope, Chats) {
   $scope.chats = Chats.inventory();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
+})
+
+.controller('HomeCtrl', function($scope) {})
+
+.controller('AddCtrl', function($scope, Chats) {
+	$scope.chats = Chats.all();
+	$scope.new = function(Chats) {
+		Chats += ({name: this.name})
+	};
+	
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
@@ -27,7 +62,4 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
 });
