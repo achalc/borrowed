@@ -34,7 +34,13 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope) {})
 
-.controller('AddCtrl', function($scope) {})
+.controller('AddCtrl', function($scope, Chats) {
+	$scope.chats = Chats.all();
+	$scope.new = function(Chats) {
+		Chats += ({name: this.name})
+	};
+	
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
