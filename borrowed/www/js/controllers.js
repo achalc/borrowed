@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
+  $scope.chats = Chats.inventory();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
