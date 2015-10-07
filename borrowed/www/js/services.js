@@ -4,6 +4,29 @@ angular.module('starter.services', [])
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
+  var inventory = [{
+    id: 0,
+    name: 'Yoga Mat',
+    lentText: 'Achal lent to Katherine 7 hours ago',
+    returnText: 'Katherine will return in 1 day',
+    lent: false,
+    face: 'http://www.pigazo.com/wp-content/uploads/2015/08/yoga-mat-navy-blue.jpg'
+  }, {
+    id: 1,
+    name: 'Wireless Mouse',
+    lentText: 'Achal lent to Katherine 7 hours ago',
+    returnText: 'Katherine will return in 1 day',
+    lent: false,
+    face: 'http://images.apple.com/magicmouse/images/hero_1.jpg'
+  }, {
+    id: 2,
+    name: 'iPhone Charger',
+    lentText: 'Achal lent to Katherine 7 hours ago',
+    returnText: 'Katherine will return in 1 day',
+    lent: true,
+    face: 'http://cdn.cultofmac.com/wp-content/uploads/2012/05/221694178.jpg'
+  }];
+
   var chats = [{
     id: 0,
     name: 'Yoga Mat',
@@ -42,6 +65,9 @@ angular.module('starter.services', [])
   }];
 
   return {
+    inventory: function() {
+      return inventory;
+    },
     all: function() {
       return chats;
     },
