@@ -41,28 +41,32 @@ angular.module('starter.services', [])
     returnText: 'Katherine will return in 1 day',
     lent: true,
     face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
-  }, {
-    id: 2,
-    name: 'Adam Bradleyson',
-    lentText: 'Achal lent to Katherine 7 hours ago',
-    returnText: 'Katherine will return in 1 day',
-    lent: true,
-    face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-  }, {
-    id: 3,
-    name: 'Perry Governor',
-    lentText: 'Achal lent to Katherine 7 hours ago',
-    returnText: 'Katherine will return in 1 day',
-    lent: false,
-    face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
-  }, {
-    id: 4,
-    name: 'Mike Harrington',
-    lentText: 'Achal lent to Katherine 7 hours ago',
-    returnText: 'Katherine will return in 1 day',
-    lent: false,
-    face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
-  }];
+  }
+
+  // , {
+  //   id: 2,
+  //   name: 'Adam Bradleyson',
+  //   lentText: 'Achal lent to Katherine 7 hours ago',
+  //   returnText: 'Katherine will return in 1 day',
+  //   lent: true,
+  //   face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
+  // }, {
+  //   id: 3,
+  //   name: 'Perry Governor',
+  //   lentText: 'Achal lent to Katherine 7 hours ago',
+  //   returnText: 'Katherine will return in 1 day',
+  //   lent: false,
+  //   face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
+  // }, {
+  //   id: 4,
+  //   name: 'Mike Harrington',
+  //   lentText: 'Achal lent to Katherine 7 hours ago',
+  //   returnText: 'Katherine will return in 1 day',
+  //   lent: false,
+  //   face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
+  // }
+
+  ];
 
   return {
     inventory: function() {
