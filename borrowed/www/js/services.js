@@ -33,14 +33,14 @@ angular.module('starter.services', [])
     lentText: 'Achal lent to Katherine 7 hours ago',
     returnText: 'Katherine will return in 1 day',
     lent: false,
-    face: 'https://pbs.twimg.com/profile_images/514549811765211136/9SgAuHeY.png'
+    face: 'http://www.pigazo.com/wp-content/uploads/2015/08/yoga-mat-navy-blue.jpg'
   }, {
     id: 1,
     name: 'Wireless Mouse',
     lentText: 'Achal lent to Katherine 7 hours ago',
     returnText: 'Katherine will return in 1 day',
     lent: true,
-    face: 'https://avatars3.githubusercontent.com/u/11214?v=3&s=460'
+    face: 'http://images.apple.com/magicmouse/images/hero_1.jpg'
   }
 
   // , {
