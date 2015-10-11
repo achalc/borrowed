@@ -1,21 +1,26 @@
 <ion-view>
   <ion-content class="padding">
-       <h3>
-         New Item
-       </h3>
-	<div class="list">
-	  <label class="item item-input">
-	    <input type="name" placeholder="Item Name">
-	  </label>
-	  <label class="item item-input">
-	    <input type="description" placeholder="Item Description (optional)">
-	  </label>
-	</div>
-	<button class="button button-small button-light" ui-sref="tab.chats">
-	  Cancel
-	</button>
-	<button class="button button-small button-positive" ng-click="new()" ui-sref="tab.chats">
-	  Submit
-	</button>
+       <h3> Add an Item</h3>
+    <form ng-submit="createItem(item)">
+		<div class="list">
+	      <label class="item item-input">
+	        <input type="text" placeholder="Item Name" ng-model="item.item_name">
+	      </label>
+	    </div>
+	    <div class="padding">
+	      <button type="submit" class="button button-block button-positive">Create Item</button>
+	    </div>
+		<!-- <div class="list">
+		  <label class="item item-input">
+		    <input type="text" placeholder="Item Name" ng-model="item.item_name">
+		  </label>
+		</div>
+		<button class="button button-small button-light" ui-sref="tab.chats">
+		  Cancel
+		</button>
+		<button type="submit" class="button button-small button-positive">
+		  Submit
+		</button> -->
+	</form>
   </ion-content>
 </ion-view>

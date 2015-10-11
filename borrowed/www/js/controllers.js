@@ -35,11 +35,13 @@ angular.module('starter.controllers', [])
 .controller('HomeCtrl', function($scope) {})
 
 .controller('AddCtrl', function($scope, Chats) {
-	$scope.chats = Chats.all();
-	$scope.new = function(Chats) {
-		Chats += ({name: this.name})
-	};
-	
+	$scope.chats = Chats.inventory();
+	$scope.createItem = function(item) {
+		$scope.chats.push({
+      name: item.item_name
+    });
+    item.item_name = "";
+	};	
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
