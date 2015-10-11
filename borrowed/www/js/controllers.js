@@ -1,6 +1,52 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller("TabsController", function($scope) {
+  
+  $scope.tabState = {
+    account : {
+      hidden : true
+    },
+    home : {
+      hidden : true
+    },
+    add : {
+      hidden : true
+    }
+  };
+    
+  $scope.toggleAccountTab = function() {
+    $scope.tabState.account.hidden = !$scope.tabState.account.hidden
+  }  
+  $scope.toggleHomeTab = function() {
+    $scope.tabState.home.hidden = !$scope.tabState.home.hidden
+  } 
+  $scope.toggleAddTab = function() {
+    $scope.tabState.add.hidden = !$scope.tabState.add.hidden
+  }
+})
+
+.controller('DashCtrl', function($scope, Chats) {
+  $scope.chats = Chats.all();
+  $scope.remove = function(chat) {
+    Chats.remove(chat);
+  };
+})
+
+.controller('HomeCtrl', function($scope) {})
+
+.controller('AddCtrl', function($scope, Chats, $state) {
+	$scope.chats = Chats.inventory();
+	$scope.createItem = function(item) {
+		$scope.chats.push({
+      id: Chats.inventory_size + 1,
+      name: item.item_name,
+      // placeholder until we decide whether or not to do a photo uploader
+      face: 'http://static1.tme.eu/pics/icons/no-image-placeholder-big.png'
+    });
+    item.item_name = "";
+	$state.go('tab.chats');
+	};	
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called
@@ -11,7 +57,7 @@ angular.module('starter.controllers', [])
   //$scope.$on('$ionicView.enter', function(e) {
   //});
 
-  $scope.chats = Chats.all();
+  $scope.chats = Chats.inventory();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
@@ -22,7 +68,4 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
 });
