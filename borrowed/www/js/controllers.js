@@ -34,13 +34,14 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope) {})
 
-.controller('AddCtrl', function($scope, Chats) {
+.controller('AddCtrl', function($scope, Chats, $state) {
 	$scope.chats = Chats.inventory();
 	$scope.createItem = function(item) {
 		$scope.chats.push({
       name: item.item_name
     });
     item.item_name = "";
+	$state.go('tab.chats');
 	};	
 })
 
