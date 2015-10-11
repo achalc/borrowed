@@ -38,7 +38,10 @@ angular.module('starter.controllers', [])
 	$scope.chats = Chats.inventory();
 	$scope.createItem = function(item) {
 		$scope.chats.push({
-      name: item.item_name
+      id: Chats.inventory_size + 1,
+      name: item.item_name,
+      // placeholder until we decide whether or not to do a photo uploader
+      face: 'http://static1.tme.eu/pics/icons/no-image-placeholder-big.png'
     });
     item.item_name = "";
 	$state.go('tab.chats');

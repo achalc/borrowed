@@ -72,6 +72,9 @@ angular.module('starter.services', [])
     inventory: function() {
       return inventory;
     },
+    inventory_size: function() {
+      return inventory.length;
+    },
     all: function() {
       return chats;
     },
