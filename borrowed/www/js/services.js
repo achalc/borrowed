@@ -78,8 +78,9 @@ angular.module('starter.services', [])
     all: function() {
       return chats;
     },
-    remove: function(chat) {
-      chats.splice(chats.indexOf(chat), 1);
+    remove: function(item) {
+      // chats.splice(chats.indexOf(chat), 1);
+      inventory.splice(inventory.indexOf(item), 1);
     },
     get: function(chatId) {
       for (var i = 0; i < chats.length; i++) {
