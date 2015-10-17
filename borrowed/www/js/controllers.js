@@ -11,6 +11,9 @@ angular.module('starter.controllers', [])
     },
     add : {
       hidden : true
+    },
+    nudge : {
+      hidden : true
     }
   };
     
@@ -22,6 +25,9 @@ angular.module('starter.controllers', [])
   } 
   $scope.toggleAddTab = function() {
     $scope.tabState.add.hidden = !$scope.tabState.add.hidden
+  }
+  $scope.toggleNudgeTab = function() {
+    $scope.tabState.nudge.hidden = !$scope.tabState.nudge.hidden
   }
 })
 
@@ -68,4 +74,21 @@ angular.module('starter.controllers', [])
 })
 
 .controller('AccountCtrl', function($scope) {
+})
+
+.controller('NudgeCtrl', function($scope, $stateParams) {
+	
+	$scope.goBack = function(){
+		$state.go("tab.chats")
+	}
+		
+	ionic.Platform.ready(function(){
+		console.log("deviceready");
+		shake.startWatch(
+			function(){
+				console.log("device is being shaken");
+				$scope.goBack();
+				$scope.$apply();
+			}, 40);
+	})
 });

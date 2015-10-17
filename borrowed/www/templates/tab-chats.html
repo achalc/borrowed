@@ -7,6 +7,11 @@
         <ion-toggle>Lend</ion-toggle>
         <!-- <p>{{chat.lentText}}</p>
         <p>{{chat.returnText}}</p> -->
+			<div ng-if="chat.lent">
+				<button class="button button-small button-energized" ui-sref="tab.nudge">
+				  Nudge
+				</button>
+			</div>
         <i class="icon ion-chevron-right icon-accessory"></i>
 
 <!--         <ion-option-button class="button-assertive" ng-click="remove(chat)">

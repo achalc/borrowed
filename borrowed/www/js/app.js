@@ -69,6 +69,16 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push', 's
       }
     }
   })
+  
+  .state('tab.nudge', {
+    url: '/nudge',
+    views: {
+      'tab-nudge': {
+        templateUrl: 'templates/tab-nudge.html',
+        controller: 'NudgeCtrl'
+      }
+    }
+  })
 
   .state('tab.chats', {
       url: '/chats',
