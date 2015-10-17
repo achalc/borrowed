@@ -4,42 +4,53 @@ angular.module('starter.services', [])
   // Might use a resource here that returns a JSON array
 
   // Some fake testing data
+  var friends = [{
+    id: 0,
+    name: 'Achal'
+  }, {
+    id: 1,
+    name: 'Allie'
+  }, {
+    id: 2,
+    name: 'Kat'
+  }];
+
   var inventory = [{
     id: 0,
     name: 'Yoga Mat',
-    lentText: 'Achal lent to Katherine 7 hours ago',
-    returnText: 'Katherine will return in 1 day',
+    borrower: null,
     lent: false,
+    return_date: null,
     face: 'http://www.pigazo.com/wp-content/uploads/2015/08/yoga-mat-navy-blue.jpg'
   }, {
     id: 1,
     name: 'Wireless Mouse',
-    lentText: 'Achal lent to Katherine 7 hours ago',
-    returnText: 'Katherine will return in 1 day',
+    borrower: null,
     lent: false,
+    return_date: null,
     face: 'http://images.apple.com/magicmouse/images/hero_1.jpg'
   }, {
     id: 2,
     name: 'iPhone Charger',
-    lentText: 'Achal lent to Katherine 7 hours ago',
-    returnText: 'Katherine will return in 1 day',
-    lent: true,
+    borrower: null,
+    lent: false,
+    return_date: null,
     face: 'http://cdn.cultofmac.com/wp-content/uploads/2012/05/221694178.jpg'
   }];
 
   var chats = [{
     id: 0,
     name: 'Yoga Mat',
-    lentText: 'Achal lent to Katherine 7 hours ago',
-    returnText: 'Katherine will return in 1 day',
     lent: false,
+    borrower: null,
+    return_date: null,
     face: 'http://www.pigazo.com/wp-content/uploads/2015/08/yoga-mat-navy-blue.jpg'
   }, {
     id: 1,
     name: 'Wireless Mouse',
-    lentText: 'Achal lent to Katherine 7 hours ago',
-    returnText: 'Katherine will return in 1 day',
     lent: true,
+    borrower: 'Achal',
+    return_date: null,
     face: 'http://images.apple.com/magicmouse/images/hero_1.jpg'
   }
 
@@ -82,10 +93,13 @@ angular.module('starter.services', [])
       // chats.splice(chats.indexOf(chat), 1);
       inventory.splice(inventory.indexOf(item), 1);
     },
+    lend: function(chat) {
+      chat.lent = true;
+    },
     get: function(chatId) {
-      for (var i = 0; i < chats.length; i++) {
-        if (chats[i].id === parseInt(chatId)) {
-          return chats[i];
+      for (var i = 0; i < inventory.length; i++) {
+        if (inventory[i].id === parseInt(chatId)) {
+          return inventory[i];
         }
       }
       return null;

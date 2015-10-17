@@ -7,11 +7,33 @@
 <ion-view view-title="{{chat.name}}">
   <ion-content class="padding">
     <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{chat.lentText}}
+    <p ng-if="chat.lent">
+      {{chat.borrower}} has your item and will return it on {{chat.return_date | date:'MM/dd/yyyy'}}
     </p>
-    <p>
-      {{chat.returnText}}
-    </p>
+
+    <button ng-if="!chat.lent" class="button button-full button-royal" ng-click="openModal(chat)" ng-controller="LendCtrl">Lend</button>
   </ion-content>
 </ion-view>
+
+<script id="lend-modal.html" type="text/ng-template">
+  <div class="modal">
+    <ion-header-bar>
+      <h1 class="title">Lend Item</h1>
+    </ion-header-bar>
+    <ion-content>
+      <form ng-submit="closeModal(chat)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Borrower</span>
+          <input type="text" ng-model="item.borrower">
+        </label>
+        <label class="item item-input">
+        <span class="input-label">Return Date</span>
+        <input type='date' ng-model="item.return_date">
+        </label
+      </div>
+      <button type="submit" class="button button-full button-energized">Done</button>
+      </form>
+    </ion-content>
+  </div>
+</script>
