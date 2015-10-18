@@ -54,6 +54,10 @@ angular.module('starter.controllers', [])
     $scope.modal.hide();
   };
 
+  $scope.closeNoSubmit = function(item) {
+    $scope.modal.hide();
+  };
+
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
   });
