@@ -96,12 +96,15 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $state) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $state, $ionicHistory) {
   $scope.chat = Chats.get($stateParams.chatId);
   // $scope.lend = function(chat) {
   //   Chats.lend(chat);
   //   $state.go('tab.lend');
   // };
+   $scope.goBack = function() {
+    $ionicHistory.goBack();
+  };
 })
 
 .controller('AccountCtrl', function($scope) {
