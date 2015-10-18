@@ -40,6 +40,32 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope) {})
 
+.controller('LendCtrl', function($scope, Chats, $ionicModal) {
+
+  $ionicModal.fromTemplateUrl('lend-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal = modal
+  })  
+
+  $scope.openModal = function(item) {
+    $scope.modal.show();
+    $scope.item = item;
+  }
+
+  $scope.closeModal = function(item) {
+    $scope.item.borrower = item.borrower;
+    $scope.item.lent = true;
+    $scope.modal.hide();
+  };
+
+  $scope.$on('$destroy', function() {
+    $scope.modal.remove();
+  });
+})
+
+
 .controller('AddCtrl', function($scope, Chats, $state) {
 	$scope.chats = Chats.inventory();
 	$scope.createItem = function(item) {
@@ -54,7 +80,7 @@ angular.module('starter.controllers', [])
 	};	
 })
 
-.controller('ChatsCtrl', function($scope, Chats) {
+.controller('ChatsCtrl', function($scope, Chats, $state) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -69,8 +95,12 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $state) {
   $scope.chat = Chats.get($stateParams.chatId);
+  $scope.lend = function(chat) {
+    Chats.lend(chat);
+    $state.go('tab.lend');
+  };
 })
 
 .controller('AccountCtrl', function($scope) {
