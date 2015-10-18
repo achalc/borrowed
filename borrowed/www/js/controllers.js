@@ -64,8 +64,11 @@ angular.module('starter.controllers', [])
 	$scope.chats = Chats.inventory();
 	$scope.createItem = function(item) {
 		$scope.chats.push({
-      id: Chats.inventory_size + 1,
+      id: Chats.inventory_size(),
       name: item.item_name,
+      borrower: null,
+      lent: false,
+      return_date: null, 
       // placeholder until we decide whether or not to do a photo uploader
       face: 'http://static1.tme.eu/pics/icons/no-image-placeholder-big.png'
     });
@@ -91,10 +94,10 @@ angular.module('starter.controllers', [])
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $state) {
   $scope.chat = Chats.get($stateParams.chatId);
-  $scope.lend = function(chat) {
-    Chats.lend(chat);
-    $state.go('tab.lend');
-  };
+  // $scope.lend = function(chat) {
+  //   Chats.lend(chat);
+  //   $state.go('tab.lend');
+  // };
 })
 
 .controller('AccountCtrl', function($scope) {
