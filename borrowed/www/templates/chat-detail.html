@@ -12,6 +12,8 @@
     </p>
 
     <button ng-if="!chat.lent" class="button button-full button-royal" ng-click="openModal(chat)" ng-controller="LendCtrl">Lend</button>
+    <button class="button button-full button-calm" ng-click="goBack()">Back</button>
+      </form>
   </ion-content>
 </ion-view>
 
@@ -25,14 +27,15 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Borrower</span>
-          <input type="text" ng-model="item.borrower">
+          <input type="text" ng-model="item.borrower" ng-required="true">
         </label>
         <label class="item item-input">
         <span class="input-label">Return Date</span>
-        <input type='date' ng-model="item.return_date">
+        <input type='date' ng-model="item.return_date" ng-required="true">
         </label
       </div>
       <button type="submit" class="button button-full button-energized">Done</button>
+      <button class="button button-full button-calm" ng-click="closeNoSubmit()">Back</button>
       </form>
     </ion-content>
   </div>
