@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('DashCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
+  $scope.chats = Chats.inventory();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
@@ -54,6 +54,10 @@ angular.module('starter.controllers', [])
     $scope.modal.hide();
   };
 
+  $scope.closeNoSubmit = function(item) {
+    $scope.modal.hide();
+  };
+
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
   });
@@ -64,8 +68,11 @@ angular.module('starter.controllers', [])
 	$scope.chats = Chats.inventory();
 	$scope.createItem = function(item) {
 		$scope.chats.push({
-      id: Chats.inventory_size + 1,
+      id: Chats.inventory_size(),
       name: item.item_name,
+      borrower: null,
+      lent: false,
+      return_date: null, 
       // placeholder until we decide whether or not to do a photo uploader
       face: 'http://static1.tme.eu/pics/icons/no-image-placeholder-big.png'
     });
@@ -89,11 +96,10 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $state) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $state, $ionicHistory) {
   $scope.chat = Chats.get($stateParams.chatId);
-  $scope.lend = function(chat) {
-    Chats.lend(chat);
-    $state.go('tab.lend');
+  $scope.goBack = function() {
+    $ionicHistory.goBack();
   };
 })
 
