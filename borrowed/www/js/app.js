@@ -23,6 +23,21 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push', 's
   });
 })
 
+.directive('hideTabs', function($rootScope) {
+	return {
+	        restrict: 'A',
+	        link: function(scope, element, attributes) {
+	            scope.$watch(attributes.hideTabs, function(value){
+	                $rootScope.hideTabs = value;
+	            });
+
+	            scope.$on('$destroy', function() {
+	                $rootScope.hideTabs = false;
+	            });
+	        }
+	    };
+})
+
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
