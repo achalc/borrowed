@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('DashCtrl', function($scope, Chats) {
-  $scope.chats = Chats.all();
+  $scope.chats = Chats.inventory();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
@@ -98,11 +98,7 @@ angular.module('starter.controllers', [])
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $state, $ionicHistory) {
   $scope.chat = Chats.get($stateParams.chatId);
-  // $scope.lend = function(chat) {
-  //   Chats.lend(chat);
-  //   $state.go('tab.lend');
-  // };
-   $scope.goBack = function() {
+  $scope.goBack = function() {
     $ionicHistory.goBack();
   };
 })
