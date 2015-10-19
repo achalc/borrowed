@@ -89,6 +89,16 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push', 's
       }
     })
 
+  .state('tab.lend', {
+    url: '/lend',
+    views: {
+      'tab-lend': {
+        templateUrl: 'templates/tab-lend.html',
+        controller: 'LendCtrl'
+      }
+    } 
+  })
+
   .state('tab.account', {
     url: '/account',
     views: {
