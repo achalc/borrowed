@@ -48,6 +48,12 @@ angular.module('starter.controllers', [])
     $scope.item = item;
   }
 
+  $scope.received = function(item) {
+    item.lent = false;
+    item.return_date = null;
+    item.lend_date = null;
+  }
+
   $scope.closeModal = function(item) {
     $scope.item.borrower = item.borrower;
     $scope.item.lent = true;
