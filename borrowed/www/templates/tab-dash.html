@@ -1,15 +1,12 @@
 <ion-view>
   <ion-content class="padding">
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats | filter: {lent: true}" type="item-text-wrap">
         <img ng-src="{{chat.face}}">
         <h2>{{chat.name}}</h2>
-        <div ng-if="chat.lent">
-          <p>{{chat.lentText}}</p>
-          <p>{{chat.returnText}}</p>
-        </div>
+        <p>{{chat.borrower}} borrowed {{chat.name}} and will return it on {{chat.return_date | date:'MM/dd/yyyy'}}</p>
         <!-- <ion-toggle>Lend</ion-toggle> -->
-        <i class="icon ion-chevron-right icon-accessory"></i>
+      <!--   <i class="icon ion-chevron-right icon-accessory"></i> -->
 <!--         <ion-option-button class="button-assertive" ng-click="remove(chat)">
           Delete
         </ion-option-button> -->
