@@ -130,13 +130,13 @@ angular.module('starter.controllers', [])
 		        y : null,
 		        z : null,
 		        timestamp : null
-		}
+		};
 		$scope.previousMeasurements = {
 			    x : null,
 			    y : null,
 			    z : null,
 			    timestamp : null
-		} 
+		};
 		$scope.watch = null;
 				
 		$ionicPlatform.ready(function() {
@@ -167,7 +167,7 @@ angular.module('starter.controllers', [])
 			 	// Stop watching method
 			 	$scope.stopWatching = function() {  
 			 	    $scope.watch.clearWatch();
-			 	}       
+			 	};       
  
 				// Detect shake method      
 				$scope.detectShake = function(result) { 
@@ -180,40 +180,41 @@ angular.module('starter.controllers', [])
 				        measurementsChange.x = Math.abs($scope.previousMeasurements.x, result.x);
 				        measurementsChange.y = Math.abs($scope.previousMeasurements.y, result.y);
 				        measurementsChange.z = Math.abs($scope.previousMeasurements.z, result.z);
-				    }
+				    };
  
-				            // If measurement change is bigger then predefined deviation
-				            if (measurementsChange.x + measurementsChange.y + measurementsChange.z > $scope.options.deviation) {
-				                $scope.stopWatching();  // Stop watching because it will start triggering like hell
-				                console.log('Shake detected'); // shake detected
-								setTimeout($scope.startWatching(), 1000);
+				    // If measurement change is bigger then predefined deviation
+				    if (measurementsChange.x + measurementsChange.y + measurementsChange.z > $scope.options.deviation) {
+				         $scope.stopWatching();  // Stop watching because it will start triggering like hell
+				         console.log('Shake detected'); // shake detected
+						 setTimeout($scope.startWatching(), 1000);
 				  
  
-				                // Clean previous measurements after succesfull shake detection, so we can do it next time
-				                $scope.previousMeasurements = { 
-				                    x: null, 
-				                    y: null, 
-				                    z: null
-				                }   
-								$state.go('tab.chats')            
-				            } else {
-				                // On first measurements set it as the previous one
-				                $scope.previousMeasurements = {
-				                    x: result.x,
-				                    y: result.y,
-				                    z: result.z
-				                }
-				            }           
+				         // Clean previous measurements after succesfull shake detection, so we can do it next time
+				         $scope.previousMeasurements = { 
+				         	x: null, 
+				         	y: null, 
+				         	z: null
+				         };   
+						 $state.go('tab.chats');            
+				   	}
+					else {
+				    	// On first measurements set it as the previous one
+				    	$scope.previousMeasurements = {
+				        	x: result.x,
+				        	y: result.y,
+				        	z: result.z
+				       	};
+				  	};         
  
-				        }       
+				};       
  
-				    });
+			});
  
-				    $scope.$on('$ionicView.beforeLeave', function(){
-				        $scope.watch.clearWatch(); // Turn off motion detection watcher
-				    }); 
+			$scope.$on('$ionicView.beforeLeave', function(){
+					$scope.watch.clearWatch(); // Turn off motion detection watcher
+				}); 
 					
 	
-	$scope.startWatching()
+			$scope.startWatching();
 	$rootScope.showFooter = true;
 });
