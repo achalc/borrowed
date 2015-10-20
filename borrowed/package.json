@@ -27,7 +27,10 @@
     {
       "locator": "https://github.com/leecrossley/cordova-plugin-shake.git",
       "id": "cordova-plugin-shake"
-    }
+    },
+    "org.apache.cordova.device-motion"
   ],
-  "cordovaPlatforms": []
+  "cordovaPlatforms": [
+    "android"
+  ]
 }

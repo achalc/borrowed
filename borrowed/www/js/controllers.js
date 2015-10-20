@@ -131,60 +131,62 @@ angular.module('starter.controllers', [])
 		        z : null,
 		        timestamp : null
 		}
-				$scope.previousMeasurements = {
-			        x : null,
-			        y : null,
-			        z : null,
-			        timestamp : null
-			    } 
-				$scope.watch = null;
-				$ionicPlatform.ready(function() {
+		$scope.previousMeasurements = {
+			    x : null,
+			    y : null,
+			    z : null,
+			    timestamp : null
+		} 
+		$scope.watch = null;
+				
+		$ionicPlatform.ready(function() {
+                       	
+			 //Start Watching method
+			 $scope.startWatching = function() {     
  
-				        //Start Watching method
-				        $scope.startWatching = function() {     
+					// Device motion configuration
+					$scope.watch = $cordovaDeviceMotion.watchAcceleration($scope.options);
  
-				            // Device motion configuration
-				            $scope.watch = $cordovaDeviceMotion.watchAcceleration($scope.options);
+				    // Device motion initilaization
+				    $scope.watch.then(null, function(error) {
+				        console.log('Error');
+				    },function(result) {
  
-				            // Device motion initilaization
-				            $scope.watch.then(null, function(error) {
-				                console.log('Error');
-				            },function(result) {
+				    	// Set current data  
+				    	$scope.measurements.x = result.x;
+				    	$scope.measurements.y = result.y;
+				    	$scope.measurements.z = result.z;
+				    	$scope.measurements.timestamp = result.timestamp;                 
  
-				                // Set current data  
-				                $scope.measurements.x = result.x;
-				                $scope.measurements.y = result.y;
-				                $scope.measurements.z = result.z;
-				                $scope.measurements.timestamp = result.timestamp;                 
+				        // Detecta shake  
+				        $scope.detectShake(result);  
  
-				                // Detecta shake  
-				                $scope.detectShake(result);  
+				 	});     
+				};      
  
-				            });     
-				        };      
+			 	// Stop watching method
+			 	$scope.stopWatching = function() {  
+			 	    $scope.watch.clearWatch();
+			 	}       
  
-				        // Stop watching method
-				        $scope.stopWatching = function() {  
-				            $scope.watch.clearWatch();
-				        }       
+				// Detect shake method      
+				$scope.detectShake = function(result) { 
  
-				        // Detect shake method      
-				        $scope.detectShake = function(result) { 
+					//Object to hold measurement difference between current and old data
+					var measurementsChange = {};
  
-				            //Object to hold measurement difference between current and old data
-				            var measurementsChange = {};
- 
-				            // Calculate measurement change only if we have two sets of data, current and old
-				            if ($scope.previousMeasurements.x !== null) {
-				                measurementsChange.x = Math.abs($scope.previousMeasurements.x, result.x);
-				                measurementsChange.y = Math.abs($scope.previousMeasurements.y, result.y);
-				                measurementsChange.z = Math.abs($scope.previousMeasurements.z, result.z);
-				            }
+				    // Calculate measurement change only if we have two sets of data, current and old
+				    if ($scope.previousMeasurements.x !== null) {
+				        measurementsChange.x = Math.abs($scope.previousMeasurements.x, result.x);
+				        measurementsChange.y = Math.abs($scope.previousMeasurements.y, result.y);
+				        measurementsChange.z = Math.abs($scope.previousMeasurements.z, result.z);
+				    }
  
 				            // If measurement change is bigger then predefined deviation
 				            if (measurementsChange.x + measurementsChange.y + measurementsChange.z > $scope.options.deviation) {
 				                $scope.stopWatching();  // Stop watching because it will start triggering like hell
 				                console.log('Shake detected'); // shake detected
+								setTimeout($scope.startWatching(), 1000);
 				  
  
 				                // Clean previous measurements after succesfull shake detection, so we can do it next time
@@ -192,8 +194,8 @@ angular.module('starter.controllers', [])
 				                    x: null, 
 				                    y: null, 
 				                    z: null
-				                }               
-								$state.go('tab.chats');
+				                }   
+								$state.go('tab.chats')            
 				            } else {
 				                // On first measurements set it as the previous one
 				                $scope.previousMeasurements = {
@@ -212,6 +214,6 @@ angular.module('starter.controllers', [])
 				    }); 
 					
 	
-	
+	$scope.startWatching()
 	$rootScope.showFooter = true;
 });
