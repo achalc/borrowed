@@ -20,6 +20,7 @@ angular.module('starter.services', [])
     name: 'Yoga Mat',
     borrower: null,
     lent: false,
+    lend_date: null,
     return_date: null,
     face: 'http://www.pigazo.com/wp-content/uploads/2015/08/yoga-mat-navy-blue.jpg'
   }, {
@@ -27,6 +28,7 @@ angular.module('starter.services', [])
     name: 'Wireless Mouse',
     borrower: null,
     lent: false,
+    lend_date: null,
     return_date: null,
     face: 'http://images.apple.com/magicmouse/images/hero_1.jpg'
   }, {
@@ -34,6 +36,7 @@ angular.module('starter.services', [])
     name: 'iPhone Charger',
     borrower: null,
     lent: false,
+    lend_date: null,
     return_date: null,
     face: 'http://cdn.cultofmac.com/wp-content/uploads/2012/05/221694178.jpg'
   }];

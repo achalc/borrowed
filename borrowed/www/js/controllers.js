@@ -34,7 +34,7 @@ angular.module('starter.controllers', [])
 
 .controller('HomeCtrl', function($scope) {})
 
-.controller('LendCtrl', function($scope, Chats, $ionicModal) {
+.controller('LendCtrl', function($scope, Chats, $ionicModal, $filter) {
 
   $ionicModal.fromTemplateUrl('lend-modal.html', {
     scope: $scope,
@@ -48,9 +48,16 @@ angular.module('starter.controllers', [])
     $scope.item = item;
   }
 
+  $scope.received = function(item) {
+    item.lent = false;
+    item.return_date = null;
+    item.lend_date = null;
+  }
+
   $scope.closeModal = function(item) {
     $scope.item.borrower = item.borrower;
     $scope.item.lent = true;
+    $scope.item.lend_date = $filter('date')(new Date(), 'MM/dd/yy');
     $scope.modal.hide();
   };
 
@@ -72,6 +79,7 @@ angular.module('starter.controllers', [])
       name: item.item_name,
       borrower: null,
       lent: false,
+      lend_date: null,
       return_date: null, 
       // placeholder until we decide whether or not to do a photo uploader
       face: 'http://static1.tme.eu/pics/icons/no-image-placeholder-big.png'

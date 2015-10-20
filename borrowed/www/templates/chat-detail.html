@@ -8,10 +8,11 @@
   <ion-content class="padding">
     <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
     <p ng-if="chat.lent">
-      {{chat.borrower}} has your item and will return it on {{chat.return_date | date:'MM/dd/yyyy'}}
+      {{chat.borrower}} borrowed your {{chat.name}} on {{chat.lend_date}} and will return it on {{chat.return_date | date:'MM/dd/yyyy'}}
     </p>
 
     <button ng-if="!chat.lent" class="button button-full button-royal" ng-click="openModal(chat)" ng-controller="LendCtrl">Lend</button>
+    <button ng-if="chat.lent" class="button button-full button-balanced" ng-click="received(chat)" ng-controller="LendCtrl">Received</button>
     <button class="button button-full button-calm" ng-click="goBack()">Back</button>
       </form>
   </ion-content>
