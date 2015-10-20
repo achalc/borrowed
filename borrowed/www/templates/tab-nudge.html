@@ -1,16 +1,14 @@
 <ion-view hide-tabs=false>
   <ion-content class="padding">
-  <br></br>
-  <br></br>
        <h3>
          Nudge
        </h3>
 	   <p>Shake your device to send a reminder to return this item!</p>
 	   
-	<button on-drag-up="onDragUp()" on-drag-down="onDragDown()" class="button button-small button-positive" ui-sref="tab.chats">
+	<button class="button button-medium button-positive" ng-click="nudgedPopup()" ui-sref="tab.chats">
 	  Nudge
 	</button>
-	<button class="button button-small button-stable" ui-sref="tab.chats">
+	<button class="button button-medium button-stable" ui-sref="tab.chats">
 	  Cancel
 	</button>
   </ion-content>

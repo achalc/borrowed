@@ -129,7 +129,7 @@ angular.module('starter.controllers', [])
 	$rootScope.showFooter = true;
 })
 
-.controller('NudgeCtrl', function($scope, $stateParams, $rootScope, $ionicPlatform, $cordovaDeviceMotion) {
+.controller('NudgeCtrl', function($scope, $stateParams, $rootScope, $ionicPlatform, $cordovaDeviceMotion, $ionicPopup, $timeout) {
 
 
 	$scope.options = { 
@@ -226,9 +226,21 @@ angular.module('starter.controllers', [])
 		
     });
 	
-	$scope.$on('$ionicView.beforeLeave', function(){
-	    $scope.watch.clearWatch(); // Turn off motion detection watcher
-	});	
-					
+	//$scope.$on('$ionicView.beforeLeave', function(){
+	//    $scope.watch.clearWatch(); // Turn off motion detection watcher
+	//});	
+	
+    $scope.nudgedPopup = function() {
+    var nudgePopup = $ionicPopup.show({
+      title: 'Nudge has been sent.'
+    });
+    nudgePopup.then(function(res) {
+      console.log('Tapped!', res);
+    });
+    $timeout(function() {
+       nudgePopup.close(); //close the popup after 3 seconds for some reason
+    }, 1500);
+  };
+  //$scope.startWatching();			
 	$rootScope.showFooter = true;
 });
