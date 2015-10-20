@@ -132,6 +132,16 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push', 's
         controller: 'AccountCtrl'
       }
     }
+  })
+  
+  .state('tab.register', {
+    url: '/register',
+    views: {
+      'tab-register': {
+        templateUrl: 'templates/tab-register.html',
+        controller: 'RegCtrl'
+      }
+    }
   });
 
   // if none of the above states are matched, use this as the fallback

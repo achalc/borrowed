@@ -14,7 +14,10 @@ angular.module('starter.controllers', [])
     },
     nudge : {
       hidden : true
-    }
+    },
+	register : {
+	  hidden : true
+	}
   };
     
   $scope.toggleAccountTab = function() {
@@ -29,6 +32,9 @@ angular.module('starter.controllers', [])
   $scope.toggleNudgeTab = function() {
     $scope.tabState.nudge.hidden = !$scope.tabState.nudge.hidden
   }
+  $scope.toggleRegisterTab = function() {
+    $scope.tabState.register.hidden = !$scope.tabState.register.hidden
+  }
 })
 
 .controller('DashCtrl', function($scope, Chats, $rootScope) {
@@ -40,6 +46,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('HomeCtrl', function($scope, $rootScope) {
+	$rootScope.showFooter = false;
+})
+
+.controller('RegCtrl', function($scope, $rootScope) {
 	$rootScope.showFooter = false;
 })
 
