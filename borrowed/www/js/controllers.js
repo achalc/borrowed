@@ -31,16 +31,19 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('DashCtrl', function($scope, Chats) {
+.controller('DashCtrl', function($scope, Chats, $rootScope) {
   $scope.chats = Chats.inventory();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
+  $rootScope.showFooter = true;
 })
 
-.controller('HomeCtrl', function($scope) {})
+.controller('HomeCtrl', function($scope, $rootScope) {
+	$rootScope.showFooter = false;
+})
 
-.controller('LendCtrl', function($scope, Chats, $ionicModal) {
+.controller('LendCtrl', function($scope, Chats, $ionicModal, $rootScope) {
 
   $ionicModal.fromTemplateUrl('lend-modal.html', {
     scope: $scope,
@@ -67,10 +70,11 @@ angular.module('starter.controllers', [])
   $scope.$on('$destroy', function() {
     $scope.modal.remove();
   });
+  $rootScope.showFooter = true;
 })
 
 
-.controller('AddCtrl', function($scope, Chats, $state) {
+.controller('AddCtrl', function($scope, Chats, $state, $rootScope) {
 	$scope.chats = Chats.inventory();
 	$scope.createItem = function(item) {
 		$scope.chats.push({
@@ -85,9 +89,10 @@ angular.module('starter.controllers', [])
     item.item_name = "";
 	$state.go('tab.chats');
 	};	
+	$rootScope.showFooter = true;
 })
 
-.controller('ChatsCtrl', function($scope, Chats, $state) {
+.controller('ChatsCtrl', function($scope, Chats, $state, $rootScope) {
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
   // To listen for when this page is active (for example, to refresh data),
@@ -100,19 +105,22 @@ angular.module('starter.controllers', [])
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
+  $rootScope.showFooter = true;
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $state, $ionicHistory) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, Chats, $state, $ionicHistory, $rootScope) {
   $scope.chat = Chats.get($stateParams.chatId);
   $scope.goBack = function() {
     $ionicHistory.goBack();
   };
+  $rootScope.showFooter = true;
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, $rootScope) {
+	$rootScope.showFooter = true;
 })
 
-.controller('NudgeCtrl', function($scope, $stateParams) {
+.controller('NudgeCtrl', function($scope, $stateParams, $rootScope) {
 	
 	$scope.goBack = function(){
 		$state.go("tab.chats")
@@ -127,4 +135,5 @@ angular.module('starter.controllers', [])
 				$scope.$apply();
 			}, 40);
 	})
+	$rootScope.showFooter = true;
 });
