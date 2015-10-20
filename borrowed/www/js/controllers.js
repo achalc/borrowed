@@ -131,12 +131,55 @@ angular.module('starter.controllers', [])
 
 .controller('NudgeCtrl', function($scope, $stateParams, $rootScope, $ionicPlatform, $cordovaDeviceMotion, $ionicPopup, $timeout) {
 
+	//document.addEventListener("deviceready", function () {
+    //
+	//    $cordovaDeviceMotion.getCurrentAcceleration().then(function(result) {
+	//      var X = result.x;
+	//      var Y = result.y;
+	//      var Z = result.z;
+	//      var timeStamp = result.timestamp;
+	//    }, function(err) {
+	//      // An error occurred. Show a message to the user
+	//    });
+    //
+	//  }, false);
+    //
+	//  // watch Acceleration
+	//  var options = { frequency: 20000 };
+    //
+	//  document.addEventListener("deviceready", function () {
+    //
+	//    var watch = $cordovaDeviceMotion.watchAcceleration(options);
+	//    watch.then(
+	//      null,
+	//      function(error) {
+	//      // An error occurred
+	//      },
+	//      function(result) {
+	//        var X = result.x;
+	//        var Y = result.y;
+	//        var Z = result.z;
+	//        var timeStamp = result.timestamp;
+	//    });
+    //
+    //
+	//    watch.clearWatch();
+	//    // OR
+	//    $cordovaDeviceMotion.clearWatch(watch)
+	//      .then(function(result) {
+	//        // success
+	//        }, function (error) {
+	//        // error
+	//      });
+    //
+	//  }, false);
+	  
 
 	$scope.options = { 
 		frequency: 100, // Measure every 100ms
         deviation : 25  // We'll use deviation to determine the shake event, best values in the range between 25 and 30
 	};
-
+    
 	// Current measurements
 	$scope.measurements = {
 		x : null,
@@ -144,7 +187,7 @@ angular.module('starter.controllers', [])
 		z : null,
 		timestamp : null
 	}
-
+    
 	// Previous measurements	
 	$scope.previousMeasurements = {
 		x : null,
@@ -161,7 +204,7 @@ angular.module('starter.controllers', [])
 		
 		//Start Watching method
 		$scope.startWatching = function() {		
-
+    
 		    // Device motion configuration
 			$scope.watch = $cordovaDeviceMotion.watchAcceleration($scope.options);
 			
@@ -241,6 +284,7 @@ angular.module('starter.controllers', [])
        nudgePopup.close(); //close the popup after 3 seconds for some reason
     }, 1500);
   };
+  
   //$scope.startWatching();			
 	$rootScope.showFooter = true;
 });
