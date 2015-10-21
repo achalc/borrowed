@@ -23,6 +23,21 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push', 's
   });
 })
 
+.directive('hideTabs', function($rootScope) {
+	return {
+	        restrict: 'A',
+	        link: function(scope, element, attributes) {
+	            scope.$watch(attributes.hideTabs, function(value){
+	                $rootScope.hideTabs = value;
+	            });
+
+	            scope.$on('$destroy', function() {
+	                $rootScope.hideTabs = false;
+	            });
+	        }
+	    };
+})
+
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
   // Ionic uses AngularUI Router which uses the concept of states
@@ -69,6 +84,16 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push', 's
       }
     }
   })
+  
+  .state('tab.nudge', {
+    url: '/nudge',
+    views: {
+      'tab-nudge': {
+        templateUrl: 'templates/tab-nudge.html',
+        controller: 'NudgeCtrl'
+      }
+    }
+  })
 
   .state('tab.chats', {
       url: '/chats',
@@ -105,6 +130,16 @@ angular.module('starter', ['ionic','ionic.service.core','ionic.service.push', 's
       'tab-account': {
         templateUrl: 'templates/tab-account.html',
         controller: 'AccountCtrl'
+      }
+    }
+  })
+  
+  .state('tab.register', {
+    url: '/register',
+    views: {
+      'tab-register': {
+        templateUrl: 'templates/tab-register.html',
+        controller: 'RegCtrl'
       }
     }
   });
