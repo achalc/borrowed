@@ -41,6 +41,16 @@ angular.module('starter.services', [])
     face: 'http://cdn.cultofmac.com/wp-content/uploads/2012/05/221694178.jpg'
   }];
 
+  var borrowed = [{
+    id: 0,
+    name: 'Waffle Iron',
+    face: 'http://ecx.images-amazon.com/images/I/71JtRkcDg7L._SL1500_.jpg'
+  }, {
+    id: 1,
+    name: 'Raincoat',
+    face: 'http://www.constructiongear.com/media/catalog/product/cache/3/thumbnail/9df78eab33525d08d6e5fb8d27136e95/n/s/ns45-ac_-00_yellow_front_on-model_neese-mediumagnum-45-raincoat-with-hood-48in-long-snap-front.jpg'
+  }];
+
   var chats = [{
     id: 0,
     name: 'Yoga Mat',
@@ -57,32 +67,15 @@ angular.module('starter.services', [])
     face: 'http://images.apple.com/magicmouse/images/hero_1.jpg'
   }
 
-  // , {
-  //   id: 2,
-  //   name: 'Adam Bradleyson',
-  //   lentText: 'Achal lent to Katherine 7 hours ago',
-  //   returnText: 'Katherine will return in 1 day',
-  //   lent: true,
-  //   face: 'https://pbs.twimg.com/profile_images/479090794058379264/84TKj_qa.jpeg'
-  // }, {
-  //   id: 3,
-  //   name: 'Perry Governor',
-  //   lentText: 'Achal lent to Katherine 7 hours ago',
-  //   returnText: 'Katherine will return in 1 day',
-  //   lent: false,
-  //   face: 'https://pbs.twimg.com/profile_images/598205061232103424/3j5HUXMY.png'
-  // }, {
-  //   id: 4,
-  //   name: 'Mike Harrington',
-  //   lentText: 'Achal lent to Katherine 7 hours ago',
-  //   returnText: 'Katherine will return in 1 day',
-  //   lent: false,
-  //   face: 'https://pbs.twimg.com/profile_images/578237281384841216/R3ae1n61.png'
-  // }
-
   ];
 
   return {
+    borrowed: function() {
+      return borrowed;
+    },
+    borrowed_size: function() {
+      return borrowed.length;
+    },
     inventory: function() {
       return inventory;
     },

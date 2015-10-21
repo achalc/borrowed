@@ -27,6 +27,7 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, Chats) {
   $scope.chats = Chats.inventory();
+  $scope.borrowed = Chats.borrowed();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
@@ -99,6 +100,7 @@ angular.module('starter.controllers', [])
   //});
 
   $scope.chats = Chats.inventory();
+  $scope.borrowed = Chats.borrowed();
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
