@@ -4,14 +4,40 @@
   The FriendsCtrl pulls data from the Friends service (service.js)
   The Friends service returns an array of friend data
 -->
-<ion-view view-title="{{chat.name}}">
+<ion-view view-title="{{chat.name}}" hide-tabs=false>
   <ion-content class="padding">
     <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
-    <p>
-      {{chat.lentText}}
+    <p ng-if="chat.lent">
+      {{chat.borrower}} borrowed your {{chat.name}} on {{chat.lend_date}} and will return it on {{chat.return_date | date:'MM/dd/yyyy'}}
     </p>
-    <p>
-      {{chat.returnText}}
-    </p>
+
+    <button ng-if="!chat.lent" class="button button-full button-royal" ng-click="openModal(chat)" ng-controller="LendCtrl">Lend</button>
+    <button ng-if="chat.lent" class="button button-full button-balanced" ng-click="received(chat)" ng-controller="LendCtrl">Received</button>
+    <button class="button button-full button-calm" ng-click="goBack()">Back</button>
+      </form>
   </ion-content>
 </ion-view>
+
+<script id="lend-modal.html" type="text/ng-template">
+  <div class="modal">
+    <ion-header-bar>
+      <h1 class="title">Lend Item</h1>
+    </ion-header-bar>
+    <ion-content>
+      <form ng-submit="closeModal(chat)">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Borrower</span>
+          <input type="text" ng-model="item.borrower" ng-required="true">
+        </label>
+        <label class="item item-input">
+        <span class="input-label">Return Date</span>
+        <input type='date' ng-model="item.return_date" ng-required="true">
+        </label
+      </div>
+      <button type="submit" class="button button-full button-energized">Done</button>
+      <button class="button button-full button-calm" ng-click="closeNoSubmit()">Back</button>
+      </form>
+    </ion-content>
+  </div>
+</script>

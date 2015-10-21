@@ -3,7 +3,7 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+<ion-tabs ng-class="{'tabs-item-hide': $root.hideTabs}" class="tabs-icon-top tabs-color-active-positive">
 
   <!-- Dashboard Tab -->
   <ion-tab title="Feed" icon-off="ion-ios-people-outline" icon-on="ion-ios-people" href="#/tab/dash">
@@ -20,13 +20,22 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="tab-account"></ion-nav-view>
 	  </ion-tab>
 	  
+	  
 	  <ion-tab title="Home" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ng-controller="TabsController" href="#/tab/home" hidden="{{tabState.home.hidden}}">
-	    <ion-nav-view name="tab-home"></ion-nav-view>
-		  </ion-tab>
+	  <ion-nav-view name="tab-home"></ion-nav-view>
+  </ion-tab>
 		  
-		 <ion-tab title="Add" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ng-controller="TabsController" href="#/tab/add" hidden="{{tabState.add.hidden}}">
-		  	    <ion-nav-view name="tab-add"></ion-nav-view>
-		  		  </ion-tab>
+		  <ion-tab title="Add" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ng-controller="TabsController" href="#/tab/add" hidden="{{tabState.add.hidden}}">
+		  <ion-nav-view name="tab-add"></ion-nav-view>
+	  </ion-tab>
+				  
+				  <ion-tab title="Nudge" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ng-controller="TabsController" href="#/tab/nudge" hidden="{{tabState.nudge.hidden}}">
+				  <ion-nav-view name="tab-nudge"></ion-nav-view>
+			  </ion-tab>
+								  
+								  <ion-tab title="Register" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" ng-controller="TabsController" href="#/tab/register" hidden="{{tabState.register.hidden}}">
+								  <ion-nav-view name="tab-register"></ion-nav-view>
+							  </ion-tab>
 
 
 </ion-tabs>
